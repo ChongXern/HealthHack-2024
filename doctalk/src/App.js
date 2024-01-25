@@ -1,8 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
+    <div className='App'>
+      <NavBar/>
+    </div>
+    //<h1> DocTalk! </h1>
+  );
+  /*return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +26,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;
