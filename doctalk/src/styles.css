@@ -8,13 +8,13 @@ body {
 
 .nav {
     background-image: linear-gradient(to right, #c6e2ff, #83C1FF);
-    /*background-color: lightblue;*/
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     padding: 0 1rem;
+    height: 100%;
 }
 
 .nav ul {

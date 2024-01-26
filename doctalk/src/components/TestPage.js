@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from './Header';
+import MainPage from './MainPage'
 import '../styles/Header.css';
 
 const TestPage = () => {
