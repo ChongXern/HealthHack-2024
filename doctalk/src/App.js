@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
+import UploadPage from './components/UploadPage';
 
 function App() {
   return (
     <div className='App'>
-      <MainPage />
+      <UploadPage />
     </div>
     //<h1> DocTalk! </h1>
   );
