@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../styles/UploadPage.css'
 //import { useNavigate } from 'react-router-dom';
 
 const UploadPage = () =>{
@@ -39,25 +40,25 @@ const UploadPage = () =>{
     };
     console.log('Hello World');
     return (
-        <div>
+        <div className='upload-container'>
             <h1> Ask a medical Question! </h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Title: 
-                    <input type='text' value={title} onChange={handleTitleChange}/>
+            <form className='upload-form' onSubmit={handleSubmit}>
+                <label className='label'>
+                    <b>Title:</b>
+                    <input type='text' className='input' value={title} onChange={handleTitleChange}/>
                 </label>
                 <br/>
                 <label>
-                    Image:
-                    <input type='file' accept='image/' onChange={handleImageChange}/>
+                    <b>Image: </b>
+                    <input type='file' className='text' accept='image/' onChange={handleImageChange}/>
                 </label>
                 <br/>
                 <label>
-                    Input text:
-                    <textarea value={text} onChange={handleTextChange} />
+                    <b>Input text:</b>
+                    <textarea value={text} className='textarea' onChange={handleTextChange} />
                 </label>
                 <br/>
-                <button type='submit'> Post! </button>
+                <button type='submit' className='button'> Post! </button>
             </form>
         </div>
     );
