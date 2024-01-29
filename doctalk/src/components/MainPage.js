@@ -1,14 +1,14 @@
 
-import {Link} from 'react-router-dom';
+
 import NavBar from './NavBar';
 import React from "react";
 import '../styles/MainPage.css';
 import PostPage from './PostPage';
 import {BrowserRouter as router, Link, Navigate, useNavigate} from "react-router-dom";
 //import { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom';
-import NavBar from './NavBar';
-import '../styles/MainPage.css'
+
+
+
 
 import finger from '../media/injury images/bleeding_finger.png'
 import scratch from '../media/injury images/cat_scratch.png'
@@ -17,7 +17,7 @@ import voldermort from '../media/injury images/broken_nose.png'
 import sneeze from '../media/injury images/sneezing.png'
 import tooth from '../media/injury images/tooth_loss.png'
 
-export default function MainPage() {
+function MainPage() {
     const popularPosts = [
         { id: 1, title: 'Accidentally cut my finger', text: 'Should I see the doctor about this or let it heal itself?', op: 'uqewocrde12', image: finger, comments: 15, timeAdded: '2 hrs ago', isResolved: true},
         { id: 2, title: 'A cat scratched me', text: 'And it\'s a wild cat btw', op: 'LJMO2001', image: scratch, comments: 0, timeAdded: 'just now', isResolved: false},
@@ -26,8 +26,10 @@ export default function MainPage() {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
+    
     return(
     <>
+    
         <div className='main-page'>
             <NavBar />
             <div className="popular-posts">
@@ -64,10 +66,13 @@ export default function MainPage() {
             <p>contents of the concerns, preview on the front page</p>
         </div>
         </section>
+        
+        
         </>
     );
 }
 
+export default MainPage;
 
 
 

@@ -1,8 +1,7 @@
 
 import './App.css';
 import NavBar from './components/NavBar';
-import MainPage from './components/MainPage';
-import UploadPage from './components/UploadPage';
+
 
 import MainPage from './components/MainPage';
 import PostPage from './components/PostPage';
