@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../styles/UploadPage.css'
+import NavBar from './NavBar';
 //import { useNavigate } from 'react-router-dom';
 
 const UploadPage = () =>{
@@ -41,6 +42,7 @@ const UploadPage = () =>{
     console.log('Hello World');
     return (
         <div className='upload-container'>
+            <NavBar />
             <h1> Ask a medical Question! </h1>
             <form className='upload-form' onSubmit={handleSubmit}>
                 <label className='label'>

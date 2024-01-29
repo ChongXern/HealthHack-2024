@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+//import { useEffect, useState } from 'react'
+import {Link} from 'react-router-dom';
 import NavBar from './NavBar';
 import '../styles/MainPage.css'
 
@@ -20,8 +21,9 @@ export default function MainPage() {
     ];
     return (
         <div className='main-page'>
+            <NavBar />
             <div className="popular-posts">
-                <NavBar />
+                <div className='upload-button'> Ask a medical question!</div>
                 <div className="posts-container">
                 <h2> Popular posts </h2>
                     {popularPosts.map((post) => (
