@@ -1,0 +1,21 @@
+.main-page {
+    margin: 0 auto;
+}
+
+.posts-container {
+    max-width: calc(100%-40px);
+    display: grid;
+    overflow-x: auto;
+    padding: 10px;
+    margin-right: 40px;
+}
+
+.post {
+    width: calc(100% * 0.67);
+    margin-right: 20px;
+    padding: 10px; 
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: lightgoldenrodyellow;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
