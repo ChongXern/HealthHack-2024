@@ -1,4 +1,5 @@
 const express = require('express');
+let bcrypt = require('bcrypt');
 
 // express app
 const app = express();
@@ -12,6 +13,17 @@ app.use(express.urlencoded({ extended: true })); // CAN READ req.body
 app.use(express.json());
 
 // User class and initialise dummy users
+
+async function hashPw(password) {
+    let hashPw = "";
+    const salt = await bcrypt.genSalt(1);
+    console.log(salt);
+    hashPw = await bcrypt.hash(password, salt);
+    console.log(password + " is now: ");
+    console.log(hashPw + '\n');
+    return hashPw;
+}
+
 class User {
     #userId;
     #username;
@@ -29,7 +41,7 @@ class User {
         this.lastName = lastName;
         this.userType = userType;
         this.email = email;
-        this.password = password;
+        this.password = hashPw(password);
     }
 
     getUserId() {
@@ -60,12 +72,11 @@ class User {
 
 let users = [];
 let userCount = 0;
-users.push(new User(++userCount, "testmoderator", "John", "Smith", "Moderator", "email1", "pw1"));
-users.push(new User(++userCount, "testmedicalstudent", "Mary", "Jane", "Medical Student", "email2", "pw2"));
-users.push(new User(++userCount, "testanony1", "Tom", "Holland", "Public", "email3", "pw3"));
-users.push(new User(++userCount, "testanony2", "Margot", "Robbie", "Public", "email4", "pw4"));
-users.push(new User(++userCount, "testanony3", "Chris", "Evans", "Public", "email5", "pw5"));
-
+users.push(new User(++userCount, "testmoderator", "John", "Smith", "Moderator", "email1", "password1"));
+users.push(new User(++userCount, "testmedicalstudent", "Mary", "Jane", "Medical Student", "email2", "password2"));
+users.push(new User(++userCount, "testanony1", "Tom", "Holland", "Public", "email3", "password3"));
+users.push(new User(++userCount, "testanony2", "Margot", "Robbie", "Public", "email4", "password4"));
+users.push(new User(++userCount, "testanony3", "Chris", "Evans", "Public", "email5", "password5"));
 
 // Post class and initialise dummy posts
 class Post {
@@ -114,6 +125,12 @@ let isSignedIn = false;
 let currentUser = null;
 
 // API endpoints
+//testing
+app.set('view engine', 'ejs')
+
+app.get('/test', (req, res) => {
+    res.render('newUser');
+})
 
 // Current user
 app.get('/api/currentuser', (req, res) => {
@@ -133,6 +150,7 @@ app.get('/api/users', (req, res) => {
     res.json(allUsers);
 })
 
+
 // All posts
 app.get('/api/posts', (req, res) => {
     const allPosts = {
@@ -143,16 +161,28 @@ app.get('/api/posts', (req, res) => {
 })
 
 // Sign up
-app.post('/api/signup', (req, res) => {
-    const newUser = req.body;
-
-    //if (isValid(newUser)) { // TODO: isValid function: checks repeated email, username, password
-    users.push(new User(++userCount, newUser.username, newUser.firstName, newUser.lastName, newUser.userType, newUser.email, newUser.password));
-    //}
-
+app.post('/api/signup', async (req, res) => {
     // TODO: HASH password using bcrypt
+    // const newUser = await new User( //hash pw not showing
+    //     ++userCount,
+    //     username = "test1",
+    //     firstName = "Awe",
+    //     lastName = "some",
+    //     userType = "student",
+    //     email = req.body.email,
+    //     password = req.body.password
+    // );
+    // users.push(newUser);
+    // res.redirect('/test');
 
+    // actual code
+    const newUser = req.body;
+    users.push(new User(++userCount, newUser.username, newUser.firstName, newUser.lastName, newUser.userType, newUser.email, newUser.password));
     res.redirect('/');
+    // TODO: isValid function: checks repeated email, username, password
+    //if (isValid(newUser)) { 
+
+    //}
 })
 
 // Sign in
