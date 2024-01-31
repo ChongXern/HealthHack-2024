@@ -1,24 +1,22 @@
-
 import './App.css';
 import NavBar from './components/NavBar';
-
+import logo from './media/draft_logo.png'
 
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
 import UploadPage from './components/UploadPage';
-
 import{
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-    
+  Navigate
 }from "react-router-dom";
 
 
 function App() {
   return (
     <>
+    
     
     <Router>
       <Routes>
