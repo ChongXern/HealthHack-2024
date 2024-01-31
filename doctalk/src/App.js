@@ -4,7 +4,6 @@ import NavBar from './components/NavBar';
 
 
 import MainPage from './components/MainPage';
-import PostPage from './components/PostPage';
 import LoginPage from './components/LoginPage';
 import UploadPage from './components/UploadPage';
 
@@ -20,17 +19,12 @@ import{
 function App() {
   return (
     <>
-    <div className='App'>
-      <UploadPage />
-    </div>
-    <div className='App'>
-      <UploadPage />
-    </div>
+    
     <Router>
       <Routes>
         <Route exact path="/" element = {<LoginPage/>}/>
-        <Route exact path = "/components/PostPage" element = {<PostPage/>}/>
-        <Route exact path="/compunents/MainPage" element = {<MainPage/>}/>
+        <Route exact path="/components/UploadPage" element = {<UploadPage/>}/>
+        <Route exact path="/components/MainPage" element = {<MainPage/>}/>
       </Routes>
     </Router>
     </>
@@ -39,8 +33,10 @@ function App() {
 
 
 
-
-
+/*<div className='App'>
+      <UploadPage />
+  </div>
+*/
     
     //<h1> DocTalk! </h1>
   

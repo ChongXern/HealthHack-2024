@@ -3,7 +3,6 @@
 import NavBar from './NavBar';
 import React from "react";
 import '../styles/MainPage.css';
-import PostPage from './PostPage';
 import {BrowserRouter as router, Link, Navigate, useNavigate} from "react-router-dom";
 //import { useEffect, useState } from 'react'
 
@@ -29,8 +28,7 @@ function MainPage() {
     
     return(
     <>
-    
-        <div className='main-page'>
+    <div className='main-page'>
             <NavBar />
             <div className="popular-posts">
                 <div className='upload-button'> Ask a medical question!</div>
@@ -59,7 +57,7 @@ function MainPage() {
 
         <section class="posts">
         <div id="article">
-            <a href="/components/PostPage">title to the post</a>
+            <a href="/components/UploadPage">title to the post</a>
             
             <div id="status">status</div>
             
@@ -75,4 +73,23 @@ function MainPage() {
 export default MainPage;
 
 
-
+/*
+        <div className='main-page'>
+            <NavBar />
+            <div className="popular-posts">
+                <div className='upload-button'> Ask a medical question!</div>
+                <div className="posts-container">
+                <h2> Popular posts </h2>
+                    {popularPosts.map((post) => (
+                        <div key={post.id} className="post">
+                            <div className="post-title"> {post.title} </div>
+                            <div className="op"> {post.op} </div>
+                            <div> 
+                                {post.image && <img src={post.image} alt={"Post Image"} />} 
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+        */

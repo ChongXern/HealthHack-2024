@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 
 import MainPage from './components/MainPage';
-import PostPage from './components/PostPage';
 import { BrowserRouter } from 'react-router-dom';
 
 
