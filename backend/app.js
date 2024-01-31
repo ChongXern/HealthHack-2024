@@ -18,43 +18,53 @@ class User {
     #firstName;
     #lastName;
     #userType;
+    #email;
+    #password;
     postIds = [];
 
-    constructor (userId, username, firstName, lastName, userType) {
+    constructor(userId, username, firstName, lastName, userType, email, password) {
         this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userType = userType;
+        this.email = email;
+        this.password = password;
     }
-    
-    getUserId () {
+
+    getUserId() {
         return this.#userId;
     }
-    getUsername () {
+    getUsername() {
         return this.#username;
     }
-    getFirstName () {
+    getFirstName() {
         return this.#firstName;
     }
-    getLastName () {
+    getLastName() {
         return this.#lastName;
     }
-    getUserType () {
+    getUserType() {
         return this.#userType;
     }
-    addPostId (newPostId) {
+    getEmail() {
+        return this.email;
+    }
+    getPassword() {
+        return this.password;
+    }
+    addPostId(newPostId) {
         this.postIds.push(newPostId);
     }
 }
 
 let users = [];
 let userCount = 0;
-users.push(new User(++userCount, "testmoderator", "John", "Smith", "Moderator"));
-users.push(new User(++userCount, "testmedicalstudent", "Mary", "Jane", "Medical Student"));
-users.push(new User(++userCount, "testanony1", "Tom", "Holland", "Public"));
-users.push(new User(++userCount, "testanony2", "Margot", "Robbie", "Public"));
-users.push(new User(++userCount, "testanony3", "Chris", "Evans", "Public"));
+users.push(new User(++userCount, "testmoderator", "John", "Smith", "Moderator", "email1", "pw1"));
+users.push(new User(++userCount, "testmedicalstudent", "Mary", "Jane", "Medical Student", "email2", "pw2"));
+users.push(new User(++userCount, "testanony1", "Tom", "Holland", "Public", "email3", "pw3"));
+users.push(new User(++userCount, "testanony2", "Margot", "Robbie", "Public", "email4", "pw4"));
+users.push(new User(++userCount, "testanony3", "Chris", "Evans", "Public", "email5", "pw5"));
 
 
 // Post class and initialise dummy posts
@@ -65,7 +75,7 @@ class Post {
     #firstName;
     #lastName;
 
-    constructor (postId, content, userId, firstName, lastName) {
+    constructor(postId, content, userId, firstName, lastName) {
         this.postId = postId;
         this.content = content;
         this.userId = userId;
@@ -73,19 +83,19 @@ class Post {
         this.lastName = lastName;
     }
 
-    getPostId () {
+    getPostId() {
         return this.postId;
     }
-    getContent () {
+    getContent() {
         return this.content;
     }
-    getUserId () {
+    getUserId() {
         return this.userId;
     }
-    getFirstName () {
+    getFirstName() {
         return this.firstName;
     }
-    getLastName () {
+    getLastName() {
         return this.lastName;
     }
 }
@@ -110,7 +120,7 @@ app.get('/api/currentuser', (req, res) => {
     const resCurrentUser = {
         currentUser: currentUser
     };
-    
+
     res.json(resCurrentUser);
 })
 
@@ -136,7 +146,11 @@ app.get('/api/posts', (req, res) => {
 app.post('/api/signup', (req, res) => {
     const newUser = req.body;
 
-    users.push(new User(++userCount, newUser.username, newUser.firstName, newUser.lastName, newUser.userType));
+    //if (isValid(newUser)) { // TODO: isValid function: checks repeated email, username, password
+    users.push(new User(++userCount, newUser.username, newUser.firstName, newUser.lastName, newUser.userType, newUser.email, newUser.password));
+    //}
+
+    // TODO: HASH password using bcrypt
 
     res.redirect('/');
 })
@@ -145,8 +159,9 @@ app.post('/api/signup', (req, res) => {
 app.post('/api/signin', (req, res) => {
     const newSignIn = req.body;
 
-    for(let i = 0; i < userCount; i++){
-        if(newSignIn.username == users[i].username){
+    for (let i = 0; i < userCount; i++) {
+        if ((newSignIn.username == users[i].username) &&
+            (newSignIn.password == users[i].password)) {
             isSignedIn = true;
             currentUser = users[i];
             break;
@@ -160,7 +175,7 @@ app.post('/api/signin', (req, res) => {
 app.post('/api/signout', (req, res) => {
     isSignedIn = false;
     currentUser = null;
-    
+
     res.redirect('/');
 })
 
