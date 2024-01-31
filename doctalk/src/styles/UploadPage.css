@@ -41,3 +41,10 @@
     background-color: yellow;
 }
 
+.upload-image.drag-over .upload-container {
+    border-color: green;
+}
+
+.upload-image.drag-over .upload-text {
+    color: greenyellow;
+}
