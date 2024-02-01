@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../styles/UploadPage.css'
+import photoIcon from '../media/photo.png';
 import NavBar from './NavBar';
 //import { useNavigate } from 'react-router-dom';
 
@@ -7,16 +8,36 @@ const UploadPage = () =>{
     //const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null);
+    const [isDragOver, setIsDragOver] = useState(false);
     const [text, setText] = useState('');
+    //const [selectedImage, setSelectedImage] = useState(null);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
     }
 
     const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
-        setImage(selectedImage);
+        const file = event.target.files[0];
+        setImage(file);
     }
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
+        setIsDragOver(true);
+    }
+
+    const handleDragLeave = (event) => {
+        setIsDragOver(false);
+    }
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        setIsDragOver(false);
+        const file = event.dataTransfer.files[0];
+        if (file != photoIcon) setImage(file);
+    }
+    
+    const uploadText = image ? image.name : 'Drag and drop or click to upload';
 
     const handleTextChange = (event) => {
         setText(event.target.value);
@@ -39,7 +60,7 @@ const UploadPage = () =>{
         setImage(null);
         setText('');
     };
-    console.log('Hello World');
+    //console.log('Hello World');
     return (
         <div className='upload-container'>
             <NavBar />
@@ -50,9 +71,14 @@ const UploadPage = () =>{
                     <input type='text' className='input' value={title} onChange={handleTitleChange}/>
                 </label>
                 <br/>
-                <label>
-                    <b>Image: </b>
-                    <input type='file' className='text' accept='image/' onChange={handleImageChange}/>
+                <label className={"upload-image ${isDragOver ? 'drag-over' : ''}"}>
+                    <div className='upload-container' onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}>
+                        <img src={photoIcon} className='photo-icon' />
+                        <span className='upload-text'> 
+                            {uploadText} <br/>
+                            <input type='file' className='text' accept='image/' onChange={handleImageChange}/>
+                        </span>
+                    </div>
                 </label>
                 <br/>
                 <label>

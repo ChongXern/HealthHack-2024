@@ -1,0 +1,51 @@
+section{
+    margin-top:50px;
+}
+
+.details{
+
+    text-align: center;
+    border: 1px solid black;
+    width: 50%;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    margin: auto;
+    background-color: rgb(255,255,255);
+}
+
+#email, #password, #pw, #login, #username{
+    background-color: rgb(255,255,255);
+}
+
+#login{
+    font-size:30px;
+}
+
+#create-account{
+    font-size: 13px;
+    
+}
+
+#motto{
+    display:inline;
+    margin: auto;
+}
+
+#email:hover, #password:hover{
+    background-color: rgb(240, 240,  240) ;
+}
+
+.usertype{
+    max-width: 40%;
+    display: inline-block;
+    
+}
+
+.type{
+    display: flex;
+}
+
+.button{
+    margin-left: 5%;
+    margin-right: 5%;
+}

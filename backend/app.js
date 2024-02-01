@@ -137,7 +137,6 @@ app.get('/api/currentuser', (req, res) => {
     const resCurrentUser = {
         currentUser: currentUser
     };
-
     res.json(resCurrentUser);
 })
 
@@ -149,7 +148,6 @@ app.get('/api/users', (req, res) => {
 
     res.json(allUsers);
 })
-
 
 // All posts
 app.get('/api/posts', (req, res) => {
@@ -205,7 +203,6 @@ app.post('/api/signin', (req, res) => {
 app.post('/api/signout', (req, res) => {
     isSignedIn = false;
     currentUser = null;
-
     res.redirect('/');
 })
 

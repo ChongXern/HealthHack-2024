@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
+import MainPage from './components/MainPage';
+import { BrowserRouter } from 'react-router-dom';
+
+
+
 
 import TestPage from './components/TestPage';
 import reportWebVitals from './reportWebVitals';

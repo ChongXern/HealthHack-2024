@@ -1,3 +1,15 @@
+
+
+.posts{
+    border: 1px solid #000
+  }
+  
+  #status{
+    display: inline;
+    background-color: rgb(166, 233, 175);
+    float: right;
+  }
+
 .main-page {
     margin: 0 auto;
 }
