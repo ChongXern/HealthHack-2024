@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../styles/LoginPage.css';
 import '../styles.css';
 import logo from '../media/draft_logo.png';
@@ -8,13 +8,17 @@ import student_icon from "../media/student_icon.svg";
 import NavBar from './NavBar';
 
 function LoginPage(){
-
+	const [password, setPassword] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+	const changePWVisibility = () => {
+		setShowPassword(!showPassword);
+	}
     return(
         <>
         <nav className="nav" style={{height:"50px"}}>
             <a title="DocTalk home" href="/" className="site-title" > 
                 <img src={logo} alt="Doctalk.com" className="logo" />
-                <div id="motto">Your affordable helpline to medical concerns!</div>
+                <div id="motto">Your free helpline to medical concerns!</div>
             </a>
         </nav>
         <section class="bg">
@@ -47,7 +51,14 @@ function LoginPage(){
                 <br></br>
 
                 <label id="pw">Password </label>
-                <input id="password" placeholder="enter your password"></input>
+                <input type={showPassword ? 'text' : 'password'} 
+					id="password" 
+					placeholder="enter your password" 
+					value={password} 
+					onChange={(event) => setPassword(event.target.value)}
+				/>
+				<button type='button' onClick={changePWVisibility}> {showPassword ? 'Hide' : 'Show'} Password </button>
+				
                 <a href="/components/MainPage">
                     <button id= "enterButton" onClick ="/components/MainPage">enter</button>
                 </a>
