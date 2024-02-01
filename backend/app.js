@@ -87,6 +87,8 @@ class Post {
     #userId;
     #firstName;
     #lastName;
+    replyIds = [];
+    #isResolved = false;
 
     constructor(postId, content, userId, firstName, lastName) {
         this.postId = postId;
@@ -111,6 +113,15 @@ class Post {
     getLastName() {
         return this.lastName;
     }
+    addReplyId(newReplyId) {
+        this.replyIds.push(newReplyId);
+    }
+    resolvePost() {
+        this.isResolved = true;
+    }
+    unresolvePost() {
+        this.isResolved = false;
+    }
 }
 
 let posts = [];
@@ -121,6 +132,53 @@ posts.push(new Post(++postCount, "This is the content of the second post.", user
 users[3].addPostId(postCount);
 posts.push(new Post(++postCount, "This is the content of the third post.", users[4].getUserId(), users[4].getFirstName(), users[4].getLastName()));
 users[4].addPostId(postCount);
+
+// Reply class and initialise dummy replies
+class Reply {
+    #replyId;
+    #content;
+    #userId;
+    #firstName;
+    #lastName;
+    #isVerified = false;
+
+    constructor(replyId, content, userId, firstName, lastName) {
+        this.replyId = replyId;
+        this.content = content;
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    getReplyId() {
+        return this.replyId;
+    }
+    getContent() {
+        return this.content;
+    }
+    getUserId() {
+        return this.userId;
+    }
+    getFirstName() {
+        return this.firstName;
+    }
+    getLastName() {
+        return this.lastName;
+    }
+    verifyReply() {
+        this.isVerified = true;
+    }
+    unverifyReply() {
+        this.isVerified = false;
+    }
+}
+
+let replies = [];
+let replyCount = 0;
+replies.push(new Reply(++replyCount, "This is the content of the first reply.", users[0].getUserId(), users[0].getFirstName(), users[0].getLastName()));
+posts[0].addReplyId(replyCount);
+replies.push(new Reply(++replyCount, "This is the content of the second reply.", users[1].getUserId(), users[1].getFirstName(), users[1].getLastName()));
+posts[1].addReplyId(replyCount);
 
 // Keep track of current user status
 let isSignedIn = false;
@@ -172,6 +230,17 @@ function isValid(newUser) { //checks repeated email, username
     console.log("valid user" + '\n');
     return 1;
 }
+
+// Get selected post
+app.get('/api/post/:postId', (req, res) => {
+    const postIdQuery = req.params.postId;
+
+    const selectedPost = {
+        post: posts[postIdQuery]
+    };
+
+    res.json(selectedPost);
+})
 
 // Sign up
 app.post('/api/signup', async (req, res) => {
@@ -229,4 +298,12 @@ app.post('/api/newpost', (req, res) => {
     res.redirect('/');
 })
 
+// Resolve post
+app.post('/api/verify/:postId', (req, res) => {
+    const postIdQuery = req.params.postId;
+
+    posts[postIdQuery].verifyPost();
+
+    res.redirect('/');
+})
 
