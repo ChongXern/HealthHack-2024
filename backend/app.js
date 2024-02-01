@@ -1,4 +1,5 @@
 const express = require('express');
+const corsMiddleware = require('./cors');
 let bcrypt = require('bcrypt');
 
 // express app
@@ -8,6 +9,7 @@ const app = express();
 app.listen(3030); // also returns instance of server ie http.createServer()
 
 // middleware & static files
+app.use(corsMiddleware);
 app.use(express.static('public')); //all can use public files
 app.use(express.urlencoded({ extended: true })); // CAN READ req.body
 app.use(express.json());
