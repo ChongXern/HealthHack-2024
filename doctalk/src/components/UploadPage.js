@@ -17,8 +17,8 @@ const UploadPage = () =>{
     }
 
     const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
-        setImage(selectedImage);
+        const file = event.target.files[0];
+        setImage(file);
     }
 
     const handleDragOver = (event) => {
@@ -31,10 +31,10 @@ const UploadPage = () =>{
     }
 
     const handleDrop = (event) => {
-        event.ppreventDefault();
+        event.preventDefault();
         setIsDragOver(false);
         const file = event.dataTransfer.files[0];
-        setImage(file);
+        if (file != photoIcon) setImage(file);
     }
     
     const uploadText = image ? image.name : 'Drag and drop or click to upload';
@@ -73,9 +73,11 @@ const UploadPage = () =>{
                 <br/>
                 <label className={"upload-image ${isDragOver ? 'drag-over' : ''}"}>
                     <div className='upload-container' onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}>
-                        
                         <img src={photoIcon} className='photo-icon' />
-                        <span className='upload-text'> {uploadText} </span>
+                        <span className='upload-text'> 
+                            {uploadText} <br/>
+                            <input type='file' className='text' accept='image/' onChange={handleImageChange}/>
+                        </span>
                     </div>
                 </label>
                 <br/>

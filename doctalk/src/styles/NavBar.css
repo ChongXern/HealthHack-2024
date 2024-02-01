@@ -15,6 +15,7 @@ body {
     gap: 2rem;
     padding: 0 1rem;
     height: 100%;
+    font: Verdana;
 }
 
 .nav ul {
@@ -37,8 +38,29 @@ body {
     cursor: pointer;
 }
 
-
-
 .nav li.active {
     color: black;
+}
+
+.notification-container {
+    position: relative;
+}
+  
+.notification-dropdown {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 200px;
+    background-color: lightskyblue;
+    border: 1px solid blue;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+  
+.notification-item {
+    margin-bottom: 5px;
+    padding: 5px;
+    font-family: Verdana;
+    color: white;
 }
