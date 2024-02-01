@@ -5,6 +5,8 @@ import logo from './media/draft_logo.png'
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
 import UploadPage from './components/UploadPage';
+import SignupPage from './components/SignupPage';
+
 import{
   BrowserRouter as Router,
   Routes,
@@ -23,6 +25,7 @@ function App() {
         <Route exact path="/" element = {<LoginPage/>}/>
         <Route exact path="/components/UploadPage" element = {<UploadPage/>}/>
         <Route exact path="/components/MainPage" element = {<MainPage/>}/>
+        <Route exact path="/components/SignupPage" element = {<SignupPage/>}/>
       </Routes>
     </Router>
     </>

@@ -1,10 +1,10 @@
 import React from "react";
 import '../styles/LoginPage.css';
-import '../styles.css'
-import logo from '../media/draft_logo.png'
-import doctor_icon from "../media/doctor_icon.svg"
-import user_icon from "../media/user_icon.svg"
-import student_icon from "../media/student_icon.svg"
+import '../styles.css';
+import logo from '../media/draft_logo.png';
+import doctor_icon from "../media/doctor_icon.svg";
+import user_icon from "../media/user_icon.svg";
+import student_icon from "../media/student_icon.svg";
 import NavBar from './NavBar';
 
 function LoginPage(){
@@ -56,7 +56,7 @@ function LoginPage(){
 
                 <div id ="create-account">
                     <div>No account?</div>
-                    <a id="create-acc-link" href="#">create an account</a>
+                    <a id="create-acc-link" href="/components/SignupPage">create an account</a>
                 </div>
             </div>
         </section>
