@@ -6,7 +6,7 @@ import bellIcon from '../media/bell.png'
 export default function NavBar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const handleLogoClick = () => {
-        window.location.href = './MainPage.js';
+        window.location.href = '/components/MainPage';
     }
     const handleBellClick = () => {
         setIsDropdownOpen(!isDropdownOpen);

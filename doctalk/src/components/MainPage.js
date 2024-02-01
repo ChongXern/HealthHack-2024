@@ -1,5 +1,3 @@
-
-
 import NavBar from './NavBar';
 import React from "react";
 import '../styles/MainPage.css';
@@ -7,6 +5,7 @@ import {BrowserRouter as router, Link, Navigate, useNavigate} from "react-router
 //import { useEffect, useState } from 'react'
 
 
+import covid from '../media/injury images/covid_positive.png'
 import finger from '../media/injury images/bleeding_finger.png'
 import scratch from '../media/injury images/cat_scratch.png'
 import puppy from '../media/injury images/puppy.png'
@@ -16,6 +15,7 @@ import tooth from '../media/injury images/tooth_loss.png'
 
 function MainPage() {
     const popularPosts = [
+        { id: 0, title: 'Tested positive for Covid-19', text: "Have been feeling week over the past few days and woke up to this, what should I do?", op: 'worried_billy', image: covid, comments: 2, timeAdded: '1 hr ago', isResolved: false},
         { id: 1, title: 'Accidentally cut my finger', text: 'Should I see the doctor about this or let it heal itself?', op: 'uqewocrde12', image: finger, comments: 15, timeAdded: '2 hrs ago', isResolved: true},
         { id: 2, title: 'A cat scratched me', text: 'And it\'s a wild cat btw', op: 'LJMO2001', image: scratch, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 3, title: 'A dog bit me', text: 'This one\'s a wild dog also', op: 'LJMO2001', image: puppy, comments: 17, timeAdded: '5 hrs ago', isResolved: true},

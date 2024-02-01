@@ -6,6 +6,8 @@ import MainPage from './components/MainPage';
 import PostPage from './components/PostPage';
 import LoginPage from './components/LoginPage';
 import UploadPage from './components/UploadPage';
+import SignupPage from './components/SignupPage';
+
 import{
   BrowserRouter as Router,
   Routes,
@@ -31,12 +33,13 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element = {<LoginPage/>}/>
-        <Route exact path = "/components/PostPage" element = {<PostPage/>}/>
-        <Route exact path="/compunents/MainPage" element = {<MainPage/>}/>
+        <Route exact path="/components/UploadPage" element = {<UploadPage/>}/>
+        <Route exact path="/components/MainPage" element = {<MainPage/>}/>
+        <Route exact path="/components/SignupPage" element = {<SignupPage/>}/>
       </Routes>
     </Router>
     </>
   );
-}*/
+}
 
 export default App;
