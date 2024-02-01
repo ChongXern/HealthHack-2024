@@ -236,7 +236,7 @@ app.get('/api/post/:postId', (req, res) => {
     const postIdQuery = req.params.postId;
 
     const selectedPost = {
-        post: posts[postIdQuery]
+        post: posts[postIdQuery - 1]
     };
 
     res.json(selectedPost);
@@ -299,10 +299,48 @@ app.post('/api/newpost', (req, res) => {
 })
 
 // Resolve post
-app.post('/api/verify/:postId', (req, res) => {
+app.post('/api/resolve/:postId', (req, res) => {
     const postIdQuery = req.params.postId;
 
-    posts[postIdQuery].verifyPost();
+    posts[postIdQuery - 1].unresolvePost();
+
+    res.redirect('/');
+})
+
+// Unresolve post
+app.post('/api/unresolve/:postId', (req, res) => {
+    const postIdQuery = req.params.postId;
+
+    posts[postIdQuery - 1].unresolvePost();
+
+    res.redirect('/');
+})
+
+// New reply
+app.post('/api/newreply/:postId', (req, res) => {
+    const newReply = req.body;
+    const postIdQuery = req.params.postId;
+
+    replies.push(new Reply(++replyCount, newReply.content, currentUser.getUserId(), currentUser.getFirstName(), currentUser.getLastName()));
+    posts[postIdQuery - 1].addReplyId(replyCount);
+
+    res.redirect('/');
+})
+
+// Verify reply
+app.post('/api/verify/:replyId', (req, res) => {
+    const replyIdQuery = req.params.replyId;
+
+    replies[replyIdQuery - 1].verifyReply();
+
+    res.redirect('/');
+})
+
+// Unverify reply
+app.post('/api/unverify/:replyId', (req, res) => {
+    const replyIdQuery = req.params.replyId;
+
+    replies[replyIdQuery - 1].unverifyReply();
 
     res.redirect('/');
 })
