@@ -7,8 +7,6 @@ import {BrowserRouter as router, Link, Navigate, useNavigate} from "react-router
 //import { useEffect, useState } from 'react'
 
 
-
-
 import finger from '../media/injury images/bleeding_finger.png'
 import scratch from '../media/injury images/cat_scratch.png'
 import puppy from '../media/injury images/puppy.png'
@@ -25,7 +23,21 @@ function MainPage() {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
-    
+    /*fetch("http://localhost:3030/api/users", { mode: 'no-cors' })
+        .then(response => {
+            console.log("HELLO WORD")
+            if (response.ok) {
+            return response.json();
+            } else {
+            throw new Error('Request failed with status ' + response.status);
+            }
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log(error);
+        });*/
     return(
     <>
     <div className='main-page'>

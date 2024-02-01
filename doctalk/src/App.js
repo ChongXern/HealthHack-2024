@@ -17,7 +17,7 @@ import{
 function App() {
   return (
     <div className='App'>
-      <LoginPage />
+      <MainPage />
     </div>
   );
 };
