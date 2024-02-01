@@ -3,13 +3,29 @@
 <body>
     
     <div class="create-blog content">
+        <h2>New Sign Up</h2>
         <form action="/api/signup" method="POST">
-            <label for="email">New User SignUp:</label>
+            <label for="email">email:</label>
             <input type="text" id="email" name="email" required>
             <label for="password">Password:</label>
             <input type="text" id="password" name="password" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
             <button>Submit</button>
         </form>
+    </div>
+    <div class="posts content">
+        <h2>All Users</h2>
+        <% if (users.length> 0) { %> <% users.forEach((user) => { %> <h3 class="id">
+                    <%=user.id %>
+                </h3>
+                <p class="email"> email: <%=user.email %> </p>
+                <p class="password"> password: <%=user.password %> </p>
+                <p class="username"> username: <%=user.username %> </p>
+                <br>
+                <% }) } else { %>
+                    <p> no users yet </p>
+                    <% } %>
     </div>
 
 </body>
