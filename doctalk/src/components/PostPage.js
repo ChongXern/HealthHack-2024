@@ -13,7 +13,7 @@ import tooth from '../media/injury images/tooth_loss.png'
 
 export default function PostPage () {
     //const [post, setPost] = useState(null);
-    const popularPosts = [
+    const posts = [
         { id: 0, title: 'Tested positive for Covid-19', text: "Have been feeling week over the past few days and woke up to this, what should I do?", op: 'worried_billy', image: covid, comments: 2, timeAdded: '1 hr ago', isResolved: false},
         { id: 1, title: 'Accidentally cut my finger', text: 'Should I see the doctor about this or let it heal itself?', op: 'uqewocrde12', image: finger, comments: 15, timeAdded: '2 hrs ago', isResolved: true},
         { id: 2, title: 'A cat scratched me', text: 'And it\'s a wild cat btw', op: 'LJMO2001', image: scratch, comments: 0, timeAdded: 'just now', isResolved: false},
@@ -22,7 +22,7 @@ export default function PostPage () {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
-    const post = popularPosts[1];
+    const post = posts[1];
     if (!post) {
         return <div> Loading... </div>
     }
@@ -37,7 +37,8 @@ export default function PostPage () {
             <div className='post-container'>
                 <p style={{fontSize: '12px', float: 'left'}}> {post.op} </p>
                 <p style={{fontSize: '12px', float: 'right'}}> {post.timeAdded} </p>
-                <img src={post.image} alt={"Post Image"} title={post.title}/>
+                <img className='post-image' src={post.image} alt={"Post Image"} title={post.title}/>
+                <p> {post.text} </p>
             </div>
         </div>
     );

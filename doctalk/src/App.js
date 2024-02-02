@@ -19,7 +19,7 @@ import{
 function App() {
   return (
     <div className='App'>
-      <MainPage />
+      <LoginPage />
     </div>
   );
 };
@@ -40,6 +40,6 @@ function App() {
     </Router>
     </>
   );
-}
+}*/
 
 export default App;

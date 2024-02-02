@@ -23,7 +23,7 @@ function MainPage() {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
-    /*fetch("http://localhost:3030/api/users", { mode: 'no-cors' })
+    fetch("http://localhost:3030/api/posts")
         .then(response => {
             console.log("HELLO WORD")
             if (response.ok) {
@@ -37,7 +37,7 @@ function MainPage() {
         })
         .catch(error => {
             console.log(error);
-        });*/
+        });    
     return(
     <>
     <div className='main-page'>

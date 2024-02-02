@@ -13,6 +13,9 @@ function LoginPage(){
 	const changePWVisibility = () => {
 		setShowPassword(!showPassword);
 	}
+	const handleLogin = () => {
+		window.location.href = '/home';
+	}
     return(
         <>
         <nav className="nav" style={{height:"50px"}}>
@@ -21,6 +24,7 @@ function LoginPage(){
                 <div id="motto">Your free helpline to medical concerns!</div>
             </a>
         </nav>
+		<form action='localhost:3030/api/signin' method='POST'>
         <section class="bg">
            
             <div class="details">
@@ -45,7 +49,7 @@ function LoginPage(){
                 <br></br>
 
                 <label id = "username">Username </label>
-                <input id="email" placeholder="enter your email"></input>
+                <input id="username" name="username" placeholder="Enter your username"></input>
                 <br></br>
                 <br></br>
                 <br></br>
@@ -53,6 +57,7 @@ function LoginPage(){
                 <label id="pw">Password </label>
                 <input type={showPassword ? 'text' : 'password'} 
 					id="password" 
+					name="password"
 					placeholder="enter your password" 
 					value={password} 
 					onChange={(event) => setPassword(event.target.value)}
@@ -60,17 +65,19 @@ function LoginPage(){
 				<button type='button' onClick={changePWVisibility}> {showPassword ? 'Hide' : 'Show'} Password </button>
 				
                 <a href="/components/MainPage">
-                    <button id= "enterButton" onClick ="/components/MainPage">enter</button>
+                    
+					<button id="enterButton" onClick={handleLogin}> Login </button>
                 </a>
                 <br></br>
                 <br></br>
 
                 <div id ="create-account">
                     <div>No account?</div>
-                    <a id="create-acc-link" href="/components/SignupPage">create an account</a>
+                    <a id="create-acc-link" href="/components/SignupPage">Create an account</a>
                 </div>
             </div>
         </section>
+		</form>
         </>
     );
 }

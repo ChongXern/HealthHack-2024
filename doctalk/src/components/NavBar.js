@@ -12,7 +12,7 @@ export default function NavBar() {
         setIsDropdownOpen(!isDropdownOpen);
     }
     const handleLogoutClick = () => {
-        window.location.href = './LoginPage.js';
+        window.location.href = '/home';
     }
 
     return (

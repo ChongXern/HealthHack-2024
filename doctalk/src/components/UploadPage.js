@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../styles/UploadPage.css'
 import photoIcon from '../media/photo.png';
 import NavBar from './NavBar';
+
 //import { useNavigate } from 'react-router-dom';
 
 const UploadPage = () =>{
@@ -46,6 +47,7 @@ const UploadPage = () =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         const timestamp = new Date().toISOString();
+
         // API request to backend
         // send title, image, text, op info, timestamp to backend
         //console.log('Hello World');
@@ -62,24 +64,28 @@ const UploadPage = () =>{
     };
     //console.log('Hello World');
     return (
-        <div className='upload-container'>
-            <NavBar />
+        <div className='upload-page'>
+            <NavBar/>
             <h1> Ask a medical Question! </h1>
-            <form className='upload-form' onSubmit={handleSubmit}>
+            <div className='upload-container'>
+            <form className='upload-form' action='localhost:3030/api/newpost' method='post'>
                 <label className='label'>
                     <b>Title:</b>
-                    <input type='text' className='input' value={title} onChange={handleTitleChange}/>
+                    <input type='text' id='title' name='title' className='input' value={title} onChange={handleTitleChange}/>
                 </label>
+
                 <br/>
+                
                 <label className={"upload-image ${isDragOver ? 'drag-over' : ''}"}>
                     <div className='upload-container' onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}>
                         <img src={photoIcon} className='photo-icon' />
                         <span className='upload-text'> 
                             {uploadText} <br/>
-                            <input type='file' className='text' accept='image/' onChange={handleImageChange}/>
+                            <input type='file' className='text' id='text' name='text' accept='image/' onChange={handleImageChange}/>
                         </span>
                     </div>
                 </label>
+
                 <br/>
                 <label>
                     <b>Input text:</b>
@@ -88,6 +94,7 @@ const UploadPage = () =>{
                 <br/>
                 <button type='submit' className='button'> Post! </button>
             </form>
+            </div>
         </div>
     );
 };

@@ -247,7 +247,8 @@ app.post('/api/signup', async (req, res) => {
     // TODO: HASH password using bcrypt (testing purposes)
     const newUser = new User(
         ++userCount,
-        username = req.body.username,
+        //username = req.body.username,
+        username = "rick",
         firstName = "Awe", //replace w req.body.<property> etc
         lastName = "some",
         userType = "student",

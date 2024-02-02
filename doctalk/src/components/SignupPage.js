@@ -19,8 +19,8 @@ function SignupPage(){
                     <div id="motto">Your affordable helpline to medical concerns!</div>
                 </a>
             </nav>
+            <form action='localhost:3030/api/signup' method='POST'>
             <section class="bg">
-            
                 <div class="details">
                     <h1 id="login">Sign Up</h1>
                     <div>Signing up as:</div>
@@ -45,14 +45,19 @@ function SignupPage(){
                     <br></br>
                     <br></br>
 
+                    <label id = "email">Email </label>
+                    <input id="email" name="email" placeholder="enter your email"></input>
+                    <br></br>
+                    <br></br>
+                    <br></br>
                     <label id = "username">Username </label>
-                    <input id="email" placeholder="enter your email"></input>
+                    <input id="username" name="username" placeholder="enter your username"></input>
                     <br></br>
                     <br></br>
                     <br></br>
 
                     <label id="pw">Password </label>
-                    <input id="password" placeholder="enter your password"></input>
+                    <input id="password" name="password" placeholder="enter your password"></input>
                     <a href="/">
                         <button id= "enterButton" onClick= "SignedUp()">enter</button>
                     </a>
@@ -60,6 +65,7 @@ function SignupPage(){
                     <br></br>
                     </div>
             </section>
+            </form>
         </>
     );
 }
