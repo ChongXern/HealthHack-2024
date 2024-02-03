@@ -16,20 +16,11 @@ import{
 }from "react-router-dom";
 
 
-function App() {
-  return (
-    <div className='App'>
-      <LoginPage />
-    </div>
-  );
-};
-/*
+
 function App() {
   return (
     <>
-    <div className='App'>
-      <LoginPage />
-    </div>
+    
     <Router>
       <Routes>
         <Route exact path="/" element = {<LoginPage/>}/>
@@ -40,6 +31,6 @@ function App() {
     </Router>
     </>
   );
-}*/
+}
 
 export default App;

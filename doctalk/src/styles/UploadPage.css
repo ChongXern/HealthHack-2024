@@ -38,7 +38,7 @@
 }
 
 .button:hover{
-    background-color: yellow;
+    background-color: rgb(200,200,200);
 }
 
 .upload-image.drag-over .upload-container {

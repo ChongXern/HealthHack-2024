@@ -48,4 +48,12 @@ section{
 .button{
     margin-left: 5%;
     margin-right: 5%;
+    
+}
+.button:hover{
+    color: rgb(240, 240,  240);
+}
+#link{
+    text-decoration: none;
+    color:black;
 }

@@ -6,6 +6,8 @@ import doctor_icon from "../media/doctor_icon.svg";
 import user_icon from "../media/user_icon.svg";
 import student_icon from "../media/student_icon.svg";
 import NavBar from './NavBar';
+import MainPage from "./MainPage";
+
 
 function LoginPage(){
 	const [password, setPassword] = useState('');
@@ -14,7 +16,8 @@ function LoginPage(){
 		setShowPassword(!showPassword);
 	}
 	const handleLogin = () => {
-		window.location.href = '/home';
+		//window.location.href = './components/MainPage';
+        <MainPage/>
 	}
     return(
         <>
@@ -64,10 +67,10 @@ function LoginPage(){
 				/>
 				<button type='button' onClick={changePWVisibility}> {showPassword ? 'Hide' : 'Show'} Password </button>
 				
-                <a href="/components/MainPage">
+                <button id="enterButton" >
                     
-					<button id="enterButton" onClick={handleLogin}> Login </button>
-                </a>
+					<a id="link" href="/components/MainPage"> Login </a>
+                </button>
                 <br></br>
                 <br></br>
 
@@ -83,3 +86,5 @@ function LoginPage(){
 }
 
 export default LoginPage;
+
+//onClick={handleLogin}

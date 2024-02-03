@@ -12,12 +12,12 @@ export default function NavBar() {
         setIsDropdownOpen(!isDropdownOpen);
     }
     const handleLogoutClick = () => {
-        window.location.href = '/home';
+        window.location.href = '/';
     }
 
     return (
         <nav className="nav" style={{height:"50px"}}>
-        <a title="DocTalk home" href="./MainPage.js" className="site-title" onClick={handleLogoClick}> 
+        <a title="DocTalk home" href="/components/MainPage" className="site-title" onClick={handleLogoClick}> 
             <img src={logo} alt="Doctalk.com" className="logo" />
         </a>
         <ul>
@@ -30,7 +30,7 @@ export default function NavBar() {
                 </div>
             )}
             <li> <a href="#" > Profile</a> </li>
-            <li> <a href="./LoginPage.js" onClick={handleLogoutClick}> Logout </a> </li>
+            <li> <a href="/" onClick={handleLogoutClick}> Logout </a> </li>
         </ul>
         </nav>
     );
