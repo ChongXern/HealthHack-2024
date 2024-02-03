@@ -5,9 +5,6 @@ import doctor_icon from "../media/doctor_icon.svg";
 import user_icon from "../media/user_icon.svg";
 import student_icon from "../media/student_icon.svg";
 
-function SignedUp(){
-    alert("Your account has been created! Please log in :)");
-};
 
 function SignupPage(){
     
@@ -58,9 +55,9 @@ function SignupPage(){
 
                     <label id="pw">Password </label>
                     <input id="password" name="password" placeholder="enter your password"></input>
-                    <a href="/">
-                        <button id= "enterButton" onClick= "SignedUp()">enter</button>
-                    </a>
+                    <button id= "enterButton">
+                        <a id="link" href="/components/MainPage" >enter</a>
+                    </button>
                     <br></br>
                     <br></br>
                     </div>
