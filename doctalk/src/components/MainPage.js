@@ -1,6 +1,7 @@
 import NavBar from './NavBar';
 import React from "react";
 import '../styles/MainPage.css';
+import {getId, updateId} from './postIDGlobal.js'
 import {BrowserRouter as router, Link, Navigate, useNavigate} from "react-router-dom";
 //import { useEffect, useState } from 'react'
 
@@ -23,6 +24,24 @@ function MainPage() {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
+    function uploadPostButton () {
+        return (
+            <Link to="./Upload" className="post-button">
+                Ask a medical question!
+            </Link>
+        );
+    }
+    var idClicked = getId();
+    const handlePostClick = (postID) => {
+        console.log("handle post click is called with ", postID);
+        /*const currURL = new URL(window.location.href);
+        currURL.searchParams.set('postID', postID);
+        window.location.href = currURL.toString();*/
+        //updateId(postID);
+        window.location.href = `/components/PostPage?id=${postID}`;
+        console.log('Clicked post ID: ', getId());
+    }
+
     fetch("http://localhost:3030/api/posts")
         .then(response => {
             console.log("HELLO WORD")
@@ -38,22 +57,25 @@ function MainPage() {
         .catch(error => {
             console.log(error);
         });    
+    
     return(
     <>
-    <div className='main-page'>
+    <div className='main-page'> 
             <NavBar />
             <div className="popular-posts">
-                <div className='upload-button'> Ask a medical question!</div>
+                <button className='post-button'> Ask a medical question!</button>
                 <div className="posts-container">
+                <hr></hr>
                 <h2> Popular posts </h2>
                     {popularPosts.map((post) => (
-                        <div key={post.id} className="post">
-                            <div className="post-title"> {post.title} </div>
-                            <div className="op"> {post.op} </div>
+                        <a key={post.id} className="post" onClick={() => handlePostClick(post.id)} id="link" href="/components/PostPage">
+                            <div className='post-title' style={{fontSize: '14', cursor: 'pointer'}}> <b>{post.title}</b> </div>
+                            <div style={{fontSize: '12px', float: 'left', color: 'grey'}}> Posted by {post.op} </div>
+                            <div style={{fontSize: '12px', float: 'right', color: 'grey'}}> {post.timeAdded} </div>
                             <div> 
-                                {post.image && <img src={post.image} alt={"Post Image"} />} 
+                                {post.image && <img src={post.image} className='upload-image' alt={"Post Image"} />} 
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>
@@ -61,9 +83,13 @@ function MainPage() {
         <section class="filter">
         <div>Filter</div>
         <select id ="issue">
-        <option value = "respiratory"> respiratory issues</option>
-        <option value = "nervous"> nervous system issues</option>
-        <option value = "digestive"> digestive issues</option>
+            <option value = "tooth"> Dental issues</option>
+            <option value = "digestive"> Digestive issues</option>
+            <option value = "mental"> Mental well-being issues</option>
+            <option value = "nervous"> Nervous system issues</option>
+            <option value = "pet"> Pet issues </option>
+            <option value = "respiratory"> Respiratory issues</option>
+            <option value = "other"> Other issues</option>
         </select>
         </section>
 

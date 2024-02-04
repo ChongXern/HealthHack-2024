@@ -27,7 +27,7 @@ const UploadPage = () =>{
         setIsDragOver(true);
     }
 
-    const handleDragLeave = (event) => {
+    const handleDragLeave = () => {
         setIsDragOver(false);
     }
 

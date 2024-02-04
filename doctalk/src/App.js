@@ -15,18 +15,26 @@ import{
   Navigate
 }from "react-router-dom";
 
-
+/*
+function App() {
+  return (
+    <div>
+      <MainPage/>
+    </div>
+  )
+}
+*/
 
 function App() {
   return (
     <>
-    
     <Router>
       <Routes>
         <Route exact path="/" element = {<LoginPage/>}/>
         <Route exact path="/components/UploadPage" element = {<UploadPage/>}/>
         <Route exact path="/components/MainPage" element = {<MainPage/>}/>
         <Route exact path="/components/SignupPage" element = {<SignupPage/>}/>
+        <Route exact path="/components/PostPage" element = {<PostPage/>}/>
       </Routes>
     </Router>
     </>

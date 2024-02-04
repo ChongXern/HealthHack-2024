@@ -11,10 +11,15 @@ import MainPage from "./MainPage";
 
 function LoginPage(){
 	const [password, setPassword] = useState('');
+    const [activeButton, setActiveButton] = useState(null);
 	const [showPassword, setShowPassword] = useState(false);
 	const changePWVisibility = () => {
 		setShowPassword(!showPassword);
 	}
+
+    const handleButtonClick = (id) =>{
+        setActiveButton(id);
+    }
 	const handleLogin = () => {
 		//window.location.href = './components/MainPage';
         <MainPage/>
@@ -24,7 +29,7 @@ function LoginPage(){
         <nav className="nav" style={{height:"50px"}}>
             <a title="DocTalk home" href="/" className="site-title" > 
                 <img src={logo} alt="Doctalk.com" className="logo" />
-                <div id="motto">Your free helpline to medical concerns!</div>
+                <div id="motto">Your affordable helpline to medical concerns!</div>
             </a>
         </nav>
 		<form action='localhost:3030/api/signin' method='POST'>
@@ -33,16 +38,23 @@ function LoginPage(){
             <div class="details">
                 <h1 id="login">Login</h1>
                 <div class="type">
-                    <button class="button" >
-                        <img src={user_icon} class="usertype"></img>
+                    <button 
+                        className={`button ${activeButton === 'public' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('public')}>
+                    
+                        <img src={user_icon} class="usertype" alt="Public"/>
                         <div>Public</div>
                     </button>
-                    <button class="button">
-                        <img src={student_icon} class="usertype"></img>
+                    <button 
+                        className={`button ${activeButton === 'student' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('student')}>
+                        <img src={student_icon} class="usertype" alt="Student"/>
                         <div> Student</div>
                     </button>
-                    <button class="button">
-                        <img src={doctor_icon} class="usertype"></img>
+                    <button 
+                        className={`button ${activeButton === 'doctor' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('doctor')}>
+                        <img src={doctor_icon} class="usertype" alt="Doctor"></img>
                         <div>Doctor</div>
                     </button>
                     
@@ -66,7 +78,7 @@ function LoginPage(){
 					onChange={(event) => setPassword(event.target.value)}
 				/>
 				<button type='button' onClick={changePWVisibility}> {showPassword ? 'Hide' : 'Show'} Password </button>
-				
+				<br/>
                 <button id="enterButton" >
                     
 					<a id="link" href="/components/MainPage"> Login </a>

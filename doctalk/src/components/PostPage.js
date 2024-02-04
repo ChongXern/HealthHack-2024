@@ -1,7 +1,10 @@
 // Page that shows the actual post itself with comments
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { createStore } from 'redux';
 import NavBar from './NavBar';
+import {getId, updateId} from './postIDGlobal.js'
 import '../styles/PostPage.css';
+import loadingGif from '../media/loading.gif'
 
 import covid from '../media/injury images/covid_positive.png'
 import finger from '../media/injury images/bleeding_finger.png'
@@ -22,9 +25,22 @@ export default function PostPage () {
         { id: 5, title: 'Sneezing a lot lately', text: 'Is this allergy or some cold?', op: 'snot_person', image: sneeze, comments: 0, timeAdded: 'just now', isResolved: false},
         { id: 6, title: 'Lost my tooth after eating lunch', text: 'Title.', op: 'fish', image: tooth, comments: 2, timeAdded: '3 hrs ago', isResolved: true},
     ];
-    const post = posts[1];
-    if (!post) {
-        return <div> Loading... </div>
+    //var id = getId();
+    var post;
+    useEffect(() => {
+        console.log('useEffect component running');
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        console.log("ID: ", id);
+        post = posts[id];
+    }, []);
+
+    //const post = posts.find((post) => post.id === Number(id));
+    if (!post || updateId == -1) {
+        return (
+            <div> <NavBar /> 
+            Loading... </div>
+        )
     }
     return (
         <div className='post-page'> 
