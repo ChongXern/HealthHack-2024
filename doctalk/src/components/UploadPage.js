@@ -46,6 +46,10 @@ const UploadPage = () =>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!title.trim() || !text.trim()) {
+            alert('Please fill in both title and text fields before submitting.');
+            return;
+        }
         const timestamp = new Date().toISOString();
 
         // API request to backend
@@ -65,24 +69,26 @@ const UploadPage = () =>{
     //console.log('Hello World');
     return (
         <div className='upload-page'>
-            <NavBar/>
+            <NavBar />
             <h1> Ask a medical Question! </h1>
             <div className='upload-container'>
-            <form className='upload-form' action='localhost:3030/api/newpost' method='post'>
+            <form className='upload-form' onSubmit={handleSubmit}>
                 <label className='label'>
                     <b>Title:</b>
-                    <input type='text' id='title' name='title' className='input' value={title} onChange={handleTitleChange}/>
+                    <input type='text' id='title' name='title' className='input' value={title} onChange={handleTitleChange} />
                 </label>
-
                 <br/>
-                
-                <label className={"upload-image ${isDragOver ? 'drag-over' : ''}"}>
+                <label className={`upload-image ${isDragOver ? 'drag-over' : ''}`}>
                     <div className='upload-container' onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}>
-                        <img src={photoIcon} className='photo-icon' />
-                        <span className='upload-text'> 
-                            {uploadText} <br/>
-                            <input type='file' className='text' id='text' name='text' accept='image/' onChange={handleImageChange}/>
-                        </span>
+                    {image && <img src={URL.createObjectURL(image)} alt="Selected" className='photo-icon' />}
+                    {!image && (
+                    <>
+                      <img src={photoIcon} alt="Upload Icon" className='photo-icon' />
+                      <p style={{textAlign: 'center'}} className='upload-text'>{uploadText}</p>
+                      <br/>
+                    </>
+                    )}
+                    <input style={{textAlign: 'center'}} type='file' className='text' id='text' name='text' accept='image/*' onChange={handleImageChange} />
                     </div>
                 </label>
 
@@ -92,7 +98,7 @@ const UploadPage = () =>{
                     <textarea value={text} className='textarea' onChange={handleTextChange} />
                 </label>
                 <br/>
-                <a type='submit' className='button' href="/components/MainPage"> Post! </a>
+                <a type='submit' className='button' href='/components/MainPage'>Post!</a>
             </form>
             </div>
         </div>

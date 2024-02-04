@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import '../styles/LoginPage.css';
 import logo from '../media/draft_logo.png';
 import doctor_icon from "../media/doctor_icon.svg";
@@ -7,7 +7,16 @@ import student_icon from "../media/student_icon.svg";
 
 
 function SignupPage(){
-    
+    const [password, setPassword] = useState('');
+    const [activeButton, setActiveButton] = useState(null);
+	const [showPassword, setShowPassword] = useState(false);
+	const changePWVisibility = () => {
+		setShowPassword(!showPassword);
+	}
+
+    const handleButtonClick = (id) =>{
+        setActiveButton(id);
+    }
     return(
         <>
             <nav className="nav" style={{height:"50px"}}>
@@ -24,18 +33,25 @@ function SignupPage(){
                     <br></br>
 
                     <div class="type">
-                        <button class="button" >
-                            <img src={user_icon} class="usertype"></img>
-                            <div>Public</div>
-                        </button>
-                        <button class="button">
-                            <img src={student_icon} class="usertype"></img>
-                            <div> Student</div>
-                        </button>
-                        <button class="button">
-                            <img src={doctor_icon} class="usertype"></img>
-                            <div>Doctor</div>
-                        </button>
+                    <button 
+                        className={`button ${activeButton === 'public' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('public')}>
+                    
+                        <img src={user_icon} class="usertype" alt="Public"/>
+                        <div>Public</div>
+                    </button>
+                    <button 
+                        className={`button ${activeButton === 'student' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('student')}>
+                        <img src={student_icon} class="usertype" alt="Student"/>
+                        <div> Student</div>
+                    </button>
+                    <button 
+                        className={`button ${activeButton === 'doctor' ? 'active' : ''}`}
+                        onClick={() => handleButtonClick('doctor')}>
+                        <img src={doctor_icon} class="usertype" alt="Doctor"></img>
+                        <div>Doctor</div>
+                    </button>
                         
                 </div>
                     <br></br>
@@ -54,9 +70,17 @@ function SignupPage(){
                     <br></br>
 
                     <label id="pw">Password </label>
-                    <input id="password" name="password" placeholder="enter your password"></input>
+                    <input type={showPassword ? 'text' : 'password'} 
+                        id="password" 
+                        name="password"
+                        placeholder="Enter your password" 
+                        value={password} 
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                    <button type='button' onClick={changePWVisibility}> {showPassword ? 'Hide' : 'Show'} Password </button>
+                    <br/>
                     <button id= "enterButton">
-                        <a id="link" href="/components/MainPage" >enter</a>
+                        <a id="link" href="/components/MainPage" >Enter</a>
                     </button>
                     <br></br>
                     <br></br>
