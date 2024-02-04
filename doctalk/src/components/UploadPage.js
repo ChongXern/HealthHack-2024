@@ -92,7 +92,7 @@ const UploadPage = () =>{
                     <textarea value={text} className='textarea' onChange={handleTextChange} />
                 </label>
                 <br/>
-                <button type='submit' className='button'> Post! </button>
+                <a type='submit' className='button' href="/components/MainPage"> Post! </a>
             </form>
             </div>
         </div>

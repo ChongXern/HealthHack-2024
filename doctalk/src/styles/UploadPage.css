@@ -37,8 +37,24 @@
     font-size: 16px;
 }
 
+.button {
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    background-color: whitesmoke;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: inset;
+    cursor: pointer;
+}
+
 .button:hover{
-    background-color: rgb(200,200,200);
+    background-color: lightgreen;
+    color: black;
+    font-weight: bolder;
 }
 
 .upload-image.drag-over .upload-container {

@@ -37,8 +37,7 @@ function MainPage() {
         /*const currURL = new URL(window.location.href);
         currURL.searchParams.set('postID', postID);
         window.location.href = currURL.toString();*/
-        //updateId(postID);
-        window.location.href = `/components/PostPage?id=${postID}`;
+        updateId(postID);
         console.log('Clicked post ID: ', getId());
     }
 
@@ -63,10 +62,9 @@ function MainPage() {
     <div className='main-page'> 
             <NavBar />
             <div className="popular-posts">
-                <button className='post-button'> Ask a medical question!</button>
                 <div className="posts-container">
-                <hr></hr>
                 <h2> Popular posts </h2>
+                <a className='post-button' href="/components/UploadPage"> Ask a medical question!</a>
                     {popularPosts.map((post) => (
                         <a key={post.id} className="post" onClick={() => handlePostClick(post.id)} id="link" href="/components/PostPage">
                             <div className='post-title' style={{fontSize: '14', cursor: 'pointer'}}> <b>{post.title}</b> </div>
